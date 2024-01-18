@@ -16,9 +16,48 @@ header {
   background: burlywood;
   height: 48px;
   padding: 0 1em;
+  color: rgba(255, 255, 255, 0.87);
+
+  &.preview{
+    position: sticky;
+    top: 0;
+    z-index: 10;
+
+    background: #1e282f;
+  }
+}
+
+footer{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #1e282f;
+  padding: 4em 1em;
+  color: rgba(255, 255, 255, 0.87);
 }
 
 .nav-wrapper {
   display: flex;
+  align-items: center;
   gap: 8px;
+
+  &.preview{
+    gap: 20px;
+  }
+}
+
+.export{
+  position: absolute;
+    bottom: 60px;
+    right: 12px;
+}
+
+.checkbox-wrapper{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.creator-container{
+  padding: 4em;
 }

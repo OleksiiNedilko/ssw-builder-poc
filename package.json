@@ -10,12 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "mustache": "^4.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-email-editor": "^1.7.9",
     "react-router-dom": "^6.21.2"
   },
   "devDependencies": {
+    "@types/mustache": "^4.2.5",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@typescript-eslint/eslint-plugin": "^6.14.0",
