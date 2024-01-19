@@ -18,7 +18,7 @@ header {
   padding: 0 1em;
   color: rgba(255, 255, 255, 0.87);
 
-  &.preview{
+  &.preview {
     position: sticky;
     top: 0;
     z-index: 10;
@@ -27,13 +27,14 @@ header {
   }
 }
 
-footer{
+footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
   background: #1e282f;
   padding: 4em 1em;
   color: rgba(255, 255, 255, 0.87);
+  margin-top: auto;
 }
 
 .nav-wrapper {
@@ -41,23 +42,57 @@ footer{
   align-items: center;
   gap: 8px;
 
-  &.preview{
+  &.preview {
     gap: 20px;
   }
 }
 
-.export{
+.export {
   position: absolute;
-    bottom: 60px;
-    right: 12px;
+  bottom: 60px;
+  right: 12px;
 }
 
-.checkbox-wrapper{
+.checkbox-wrapper {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.creator-container{
+.creator-container {
   padding: 4em;
+  position: relative;
+}
+
+.preview-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+.preview-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.preview-content {
+  flex: 1;
+  padding: 2em;
+}
+
+.link {
+  color: inherit;
+}
+
+.page-li-wrapper {
+  display: flex;
+  max-width: 400px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+
+  button {
+    padding: 0 1em;
+  }
 }
