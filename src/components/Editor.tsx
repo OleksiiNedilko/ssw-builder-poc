@@ -1,6 +1,6 @@
 import {FC, useRef} from 'react'
 import EmailEditor, {EditorRef, EmailEditorProps} from 'react-email-editor'
-import Mustache from 'mustache'
+// import Mustache from 'mustache'
 import {useNavigate, useSearchParams} from 'react-router-dom'
 
 const Editor: FC = () => {
@@ -15,7 +15,7 @@ const Editor: FC = () => {
     if (name && slug) {
 
       unlayer?.exportHtml((data,) => {
-        const {design, html, chunks} = data
+        const { chunks} = data
         console.log(chunks)
         localStorage.setItem(slug, JSON.stringify(chunks))
         navigate(`/?slug=${slug}&name=${name}`)
@@ -30,7 +30,8 @@ const Editor: FC = () => {
     }
   }
 
-  const onReady: EmailEditorProps['onReady'] = (unlayer) => {
+  const onReady: EmailEditorProps['onReady'] = () => {
+  // const onReady: EmailEditorProps['onReady'] = (unlayer) => {
     // unlayer.registerCallback('previewHtml',function (params, done) {
     //   console.log('cb')
     //   fetch(`https://staging-api.sswmeetings.com/graphql`, {
