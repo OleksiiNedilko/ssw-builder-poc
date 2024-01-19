@@ -15,16 +15,16 @@ const Editor: FC = () => {
     if (name && slug) {
 
       unlayer?.exportHtml((data,) => {
-        const {design, html} = data
-        console.log(html)
-        localStorage.setItem(slug, html)
+        const {design, html, chunks} = data
+        console.log(chunks)
+        localStorage.setItem(slug, JSON.stringify(chunks))
         navigate(`/?slug=${slug}&name=${name}`)
 
         // console.log('--------------------')
         // console.log(design)
         //     let result = Mustache.render(html,{});
         // console.log(result)
-      }, {cleanup: true,minify:true})
+      }, {cleanup: true, minify: true})
     } else {
       navigate(`/`)
     }
@@ -75,7 +75,7 @@ const Editor: FC = () => {
   }
 
   return (<>
-    <button className={'export'} title="see result in console" onClick={exportHtml}>Export</button>
+    <button className={'export'} title="see result in console" onClick={exportHtml}>Save</button>
     <EmailEditor
       ref={emailEditorRef}
       onReady={onReady}

@@ -12,7 +12,6 @@ function App() {
         <>
           <header>
             <Nav>Home</Nav>
-            <Link to={'/preview'}>Preview</Link>
           </header>
           <CreatorPage/>
         </>

@@ -6,7 +6,6 @@ const Nav:FC<PropsWithChildren<{classname?: string}>> = ({classname,children}) =
     <div className={`nav-wrapper${classname?` ${classname}`:''}`}>
       <span>{children}</span>
       <Link to={'/'}>Home</Link>
-      <Link to={'/editor'}>Editor</Link>
       <Link to={'/preview'}>Preview</Link>
     </div>
   )

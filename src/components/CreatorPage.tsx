@@ -1,21 +1,27 @@
-import {useEffect, useState} from 'react'
+import {useEffect, useRef, useState} from 'react'
 import {useNavigate, useSearchParams} from 'react-router-dom'
 
 const CreatorPage = () => {
-  const [setAgenda, setSetAgenda] = useState(false)
-  const [setSpeakers, setSetSpeakers] = useState(false)
-  const [pages, setPages] = useState<{ name: string; slug: string }[]>([])
+  const [setAgenda, setSetAgenda] = useState(sessionStorage.getItem('agenda') === 'true')
+  const [setSpeakers, setSetSpeakers] = useState(sessionStorage.getItem('speakers') === 'true')
+  const [pages, setPages] = useState<{
+    name: string;
+    slug: string
+  }[]>(sessionStorage.getItem('pages') ? JSON.parse(sessionStorage.getItem('pages')!) : [])
 
   const navigate = useNavigate()
-const [params] = useSearchParams()
+  const [params, setParams] = useSearchParams()
+  const firstRender = useRef(true)
 
   useEffect(() => {
-    if(params.toString()){
+    if (params.toString() && firstRender.current) {
       const name = params.get('name')
       const slug = params.get('slug')
-      if(name&&slug) {
-        setPages([...pages, {name, slug}])
+      if (name && slug) {
+        setPages(prev => [...prev, {name, slug}])
+        setParams({}, {replace: true})
       }
+      firstRender.current = false
     }
   }, [params])
 
@@ -30,10 +36,13 @@ const [params] = useSearchParams()
         <input type="checkbox" checked={setSpeakers} onChange={e => setSetSpeakers(e.target.checked)}/>
         <span>add speakers page</span>
       </label>
-      {pages.map(page => <p>{page.name}</p>)}
+      {pages.map(page => <p key={page.slug}>{page.name}</p>)}
       <button type={'button'}
               onClick={() => {
                 const page = {name: `Page${pages.length}`, slug: `page-${pages.length}`}
+                sessionStorage.setItem('pages', JSON.stringify(pages))
+                sessionStorage.setItem('agenda', JSON.stringify(setAgenda))
+                sessionStorage.setItem('speakers', JSON.stringify(setSpeakers))
                 navigate(`/editor?slug=${page.slug}&name=${page.name}`)
               }}>add page
       </button>
